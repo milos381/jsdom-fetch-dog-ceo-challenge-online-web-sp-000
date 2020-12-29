@@ -28,10 +28,11 @@ function loadBreedOptions() {
 }
 function addBreeds(json) {
     let ul = document.querySelector('#dog-breeds');
-    let li = document.createElement('li');
+    
     
     for (const key in Object.keys(json.message)) {
         console.log(Object.keys(json.message)[key]);
+        let li = document.createElement('li');
         li.innerText = Object.keys(json.message)[key];
         ul.appendChild(li);
     }
