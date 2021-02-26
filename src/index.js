@@ -31,10 +31,44 @@ function addBreeds(json) {
     
     
     for (const key in Object.keys(json.message)) {
-        console.log(Object.keys(json.message)[key]);
+        //console.log(Object.keys(json.message)[key]);
         let li = document.createElement('li');
         li.innerText = Object.keys(json.message)[key];
         ul.appendChild(li);
+        li.addEventListener('click', updateColor);
     }
     
+    
 }
+function updateColor(event) {
+    event.target.style.color = 'blue';
+}
+
+    let breedMenu = document.getElementById('breed-dropdown')
+    let showingDogs = document.getElementById('dog-breeds')
+    let dogsArray = showingDogs.getElementsByTagName('li')
+    let selection;
+    let dogsOfCertainLetter = [];
+    breedMenu.addEventListener('change', function () {
+        selection = this.value
+        
+        for (const element of dogsArray){
+            if (element.innerHTML.charAt(0) === selection) {
+                dogsOfCertainLetter.push(element.innerHTML)
+                //showingDogs.style.visibility = "hidden"
+                debugger
+                console.log(element.innerHTML)
+            }
+        }
+        
+        for (const element of dogsOfCertainLetter){
+            let li = document.createElement('li')
+            li.innerHTML = element
+            showingDogs.appendChild(li)
+            
+        }
+
+    })
+    
+    
+    
