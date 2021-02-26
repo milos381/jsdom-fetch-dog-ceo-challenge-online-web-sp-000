@@ -31,10 +31,15 @@ function addBreeds(json) {
     
     
     for (const key in Object.keys(json.message)) {
-        console.log(Object.keys(json.message)[key]);
+        //console.log(Object.keys(json.message)[key]);
         let li = document.createElement('li');
         li.innerText = Object.keys(json.message)[key];
         ul.appendChild(li);
+        li.addEventListener('click', updateColor);
     }
     
+    
+}
+function updateColor(event) {
+    event.target.style.color = 'blue';
 }
