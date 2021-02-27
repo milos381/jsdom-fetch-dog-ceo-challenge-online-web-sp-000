@@ -36,6 +36,7 @@ function addBreeds(json) {
         li.innerText = Object.keys(json.message)[key];
         ul.appendChild(li);
         li.addEventListener('click', updateColor);
+        breeds.push(Object.keys(json.message)[key])
     }
     
     
@@ -51,16 +52,14 @@ function updateColor(event) {
     let dogsOfCertainLetter = [];
     breedMenu.addEventListener('change', function () {
         selection = this.value
-        
-        for (const element of dogsArray){
-            if (element.innerHTML.charAt(0) === selection) {
-                dogsOfCertainLetter.push(element.innerHTML)
-                //showingDogs.style.visibility = "hidden"
-                debugger
-                console.log(element.innerHTML)
+        dogsOfCertainLetter = [];
+        for (const element of breeds){
+            if (element.charAt(0) === selection) {
+                dogsOfCertainLetter.push(element)
+                console.log(element)
             }
         }
-        
+        showingDogs.innerHTML = ""
         for (const element of dogsOfCertainLetter){
             let li = document.createElement('li')
             li.innerHTML = element
